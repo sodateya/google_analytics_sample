@@ -52,11 +52,6 @@ class Page1 extends ConsumerWidget {
       print('AddPaymentInfo');
     }
 
-    Future b() async {
-      final analytics = ref.read(analyticsRepository);
-      analytics.setDefaultEventParameters({'version': '1.2.3'});
-    }
-
     return Center(
       child: ElevatedButton(
         onPressed: () {

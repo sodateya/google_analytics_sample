@@ -14,7 +14,14 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const ProviderScope(child: MyApp()));
+
+  //main関数内でsetDefaultEventParametersを呼ぶことで,全てのイベントでデフォルトで記録しておきたいものを設定してける
+  //version,uid,など設定しておくと便利かも
+  final container = ProviderContainer();
+  await container.read(analyticsRepository).setDefaultEventParameters(
+      {'version': '1.2.3', 'uid': 'fdshfasasas02okndabfiau'});
+
+  runApp(UncontrolledProviderScope(container: container, child: const MyApp()));
 }
 
 class MyApp extends ConsumerWidget {
@@ -39,7 +46,15 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentIndex = ref.watch(bottomNavigationBarIndexProvider);
+    void setDefaultEventParameters() async {
+      final analyticsService = ref.read(analyticsRepository);
+      await analyticsService.setDefaultEventParameters({'version': '1.2.3'});
+    }
 
+    // 画面が表示される時にデフォルトのイベントパラメータを設定
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      setDefaultEventParameters();
+    });
     final List<Widget> pages = [
       const Page1(),
       const Page2(),
