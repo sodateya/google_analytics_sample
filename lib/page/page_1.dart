@@ -22,7 +22,7 @@ class Page1 extends ConsumerWidget {
       );
     }
 
-    //以下eコマース(購入系)ログ？
+    //以下eコマース(購入系？)ログ
     //購入開始のログ
     Future beginCheckout() async {
       final analytics = ref.read(analyticsRepository);
