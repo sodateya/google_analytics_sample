@@ -1,6 +1,6 @@
 # google_analytics_sample
 
-## Google Anarytict Sample 
+## Google Analytics Sample 
 
 ### Page1
 - ボタンイベントログを残す
