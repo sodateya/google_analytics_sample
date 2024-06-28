@@ -51,10 +51,6 @@ class HomeScreen extends ConsumerWidget {
       await analyticsService.setDefaultEventParameters({'version': '1.2.3'});
     }
 
-    // 画面が表示される時にデフォルトのイベントパラメータを設定
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      setDefaultEventParameters();
-    });
     final List<Widget> pages = [
       const Page1(),
       const Page2(),
@@ -66,7 +62,7 @@ class HomeScreen extends ConsumerWidget {
       ref.read(bottomNavigationBarIndexProvider.notifier).state = index;
       //ボトムナビゲーションバーを使う際は、pushで遷移しないため自動的に記録されないため任意の名前を入れて記録させると良さそう
       //ページをenumにしたりすると良いかも
-      analytics.logScreenView(screenName: '名前');
+      analytics.logScreenView(screenName: index.toString());
     }
 
     return Scaffold(
