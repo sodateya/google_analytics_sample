@@ -87,6 +87,8 @@ class HomeScreen extends ConsumerWidget {
         ],
         currentIndex: currentIndex,
         selectedItemColor: Colors.blue,
+
+        //ここでページ記録
         onTap: onItemTapped,
       ),
     );
