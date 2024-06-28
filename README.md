@@ -1,10 +1,13 @@
 # google_analytics_sample
 
-A new Flutter project.
+## Google Anarytict Sample 
 
-## Getting Started
+### Page1
+- ボタンイベントログを残す
 
-This project is a starting point for a Flutter application.
+### Page2
+- 遷移時にログを残す
+- ルート管理し、 Navigator.pushNamedで遷移することで、ページのログを残すことができる
 
 A few resources to get you started if this is your first Flutter project:
 
